@@ -17,8 +17,29 @@ public class AddTwoNumbers {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         int result = 0;
 
-        int buf1, buf2;
+        int buf = 0;
 
+        ListNode l1NodeBuf = l1;
+        ListNode l2NodeBuf = l2;
+
+        int l1ValueBuf = l1.val;
+        int l2ValueBuf = l2.val ;
+
+        for (;;) {
+
+
+
+            buf = l1NodeBuf.val + l2NodeBuf.val;
+
+
+
+
+
+            if(l1.next == null && l2.next == null) {
+                break;
+            }
+
+        }
 
 
 
