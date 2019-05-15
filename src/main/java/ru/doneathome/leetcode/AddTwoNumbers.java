@@ -15,34 +15,62 @@ public class AddTwoNumbers {
      * Explanation: 342 + 465 = 807.
      */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        int result = 0;
 
-        int buf = 0;
+        ListNode iteratorL1 = l1;
+        ListNode iteratorL2 = l2;
 
-        ListNode l1NodeBuf = l1;
-        ListNode l2NodeBuf = l2;
+        ListNode listNode = null;
+        ListNode iterator = null;
 
-        int l1ValueBuf = l1.val;
-        int l2ValueBuf = l2.val ;
+        int buf1, buf2, bufResult;
+        boolean carryFlag = false;
+        boolean endIteratofFlag1 = false;
+        boolean endIteratofFlag2 = false;
 
-        for (;;) {
-
-
-
-            buf = l1NodeBuf.val + l2NodeBuf.val;
-
-
-
-
-
-            if(l1.next == null && l2.next == null) {
+        while(true) {
+            if (endIteratofFlag1 && endIteratofFlag2) {
                 break;
             }
 
+            buf1 = endIteratofFlag1 ? 0 : iteratorL1.val;
+            buf2 = endIteratofFlag2 ? 0 : iteratorL2.val;
+
+            bufResult = carryFlag ? buf1 + buf2 + 1 :  buf1 + buf2;
+            carryFlag = bufResult > 9;
+
+            if (listNode == null) {
+                listNode = new ListNode(bufResult%10);
+                iterator = listNode;
+            } else {
+                iterator.next = new ListNode(bufResult%10);
+                iterator = iterator.next;
+            }
+
+            if (iteratorL1.next == null) {
+                endIteratofFlag1 = true;
+            } else {
+                iteratorL1 = iteratorL1.next;
+            }
+
+            if (iteratorL2.next == null) {
+                endIteratofFlag2 = true;
+            } else {
+                iteratorL2 = iteratorL2.next;
+            }
         }
 
+        if(carryFlag) {
+            iterator.next = new ListNode(1);
+        }
 
-
-        return null;
+        return listNode;
     }
+
+}
+
+// класс определен в задании
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) { val = x; }
 }
