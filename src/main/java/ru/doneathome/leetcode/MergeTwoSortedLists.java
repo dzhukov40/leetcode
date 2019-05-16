@@ -11,28 +11,25 @@ public class MergeTwoSortedLists {
      */
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 
-        ListNode iteratorL1 = l1;
-        ListNode iteratorL2 = l2;
-
         ListNode result = null;
         ListNode iteratorResult = null;
-        int bufResult = 0;
+        ListNode bufResult;
 
-        while( iteratorL1 != null || iteratorL2 != null ) {
+        while( l1 != null || l2 != null ) {
 
-            if(  iteratorL1 == null || (iteratorL2 != null && iteratorL1.val > iteratorL2.val ) ) {
-                bufResult = iteratorL2.val;
-                iteratorL2 = iteratorL2.next;
+            if(  l1 == null || (l2 != null && l1.val > l2.val ) ) {
+                bufResult = l2;
+                l2 = l2.next;
             } else {
-                bufResult = iteratorL1.val;
-                iteratorL1 = iteratorL1.next;
+                bufResult = l1;
+                l1 = l1.next;
             }
 
             if (result == null) {
-                result = new ListNode(bufResult);
+                result = bufResult;
                 iteratorResult = result;
             } else {
-                iteratorResult.next = new ListNode(bufResult);
+                iteratorResult.next = bufResult;
                 iteratorResult = iteratorResult.next;
             }
         }
