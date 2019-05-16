@@ -66,11 +66,12 @@ public class AddTwoNumbers {
         return listNode;
     }
 
+    // класс определен в задании
+    class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) { val = x; }
+    }
+
 }
 
-// класс определен в задании
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode(int x) { val = x; }
-}
