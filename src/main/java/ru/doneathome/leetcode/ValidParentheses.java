@@ -37,25 +37,23 @@ public class ValidParentheses {
      */
     public boolean isValid(String s) {
 
-        Map<Character, Character> map = new HashMap<>();
-        map.put('(',')');
-        map.put('{','}');
-        map.put('[',']');
-
+        Map<Character, Character> mapClose = new HashMap<>();
+        mapClose.put('(',')');
+        mapClose.put('{','}');
+        mapClose.put('[',']');
 
         Stack<Character> stack = new Stack<>();
-
 
         char[] chars = s.toCharArray();
 
 
         for(int i = 0; i < chars.length; i++) {
 
-            if(chars[i] == '(' || chars[i] == '{' || chars[i] == '[') {
+            if( mapClose.containsKey(chars[i]) ) {
                 stack.push(chars[i]);
             } else {
 
-                if( stack.empty() || !map.get(stack.peek()).equals(chars[i]) ) {
+                if( stack.empty() || !mapClose.get(stack.peek()).equals(chars[i]) ) {
                     return false;
                 } else {
                     stack.pop();
