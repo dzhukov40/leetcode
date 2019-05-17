@@ -20,11 +20,10 @@ public class LongestCommonPrefix {
      * All given inputs are in lowercase letters a-z.
      */
     public String longestCommonPrefix(String[] strs) {
-        StringBuilder result = new StringBuilder();
         char buf;
 
         if (strs.length == 0) {
-            return result.toString();
+            return "";
         }
 
         for(int i = 0; i < strs[0].length(); i++) {  // это проход по буквам (*) берем первое слово за основу
@@ -32,12 +31,11 @@ public class LongestCommonPrefix {
             buf = strs[0].charAt(i);
             for(int j = 0; j < strs.length; j++) { // проход по словам
                 if( strs[j].length() <= i || buf != strs[j].charAt(i) ) {
-                    return result.toString();
+                    return strs[0].substring(0, i);
                 }
             }
-            result.append(buf);
         }
 
-        return result.toString();
+        return strs[0];
     }
 }
