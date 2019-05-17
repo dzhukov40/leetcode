@@ -22,7 +22,6 @@ public class PowxN {
      * -100.0 < x < 100.0
      * n is a 32-bit signed integer, within the range [−2^31, 2^31 − 1]
      */
-
     public double myPow(double x, int n) {
         double result;
         boolean negative = n < 0;
